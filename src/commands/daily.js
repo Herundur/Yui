@@ -24,17 +24,17 @@ module.exports = function (user1, message) {
 
         if (message.member.roles.cache.has("863126106408615939")) {
             bankdrop.bonus = 1.25
-            bankdrop.message = `❤️ Bonus **${((350 + ((userStats.skills.mine.level + userStats.skills.mine.level + userStats.skills.mine.level) * 50) + (userStats.workers * 200) + (bankdrop.value)) * bankdrop.bonus) - (350 + ((userStats.skills.mine.level + userStats.skills.mine.level + userStats.skills.mine.level) * 50) + (userStats.workers * 200) + (bankdrop.value))} silver** (25%) earned as Server-Booster!`
+            bankdrop.message = `❤️ Bonus **${new Intl.NumberFormat('de-DE').format(((350 + ((userStats.skills.mine.level + userStats.skills.mine.level + userStats.skills.mine.level) * 50) + (userStats.workers * 200) + (bankdrop.value)) * bankdrop.bonus) - (350 + ((userStats.skills.mine.level + userStats.skills.mine.level + userStats.skills.mine.level) * 50) + (userStats.workers * 200) + (bankdrop.value)))} silver** (25%) earned as Server-Booster!`
         }
     
         const embedBank = new discord.MessageEmbed()
             .setColor("#9b59b6")
             .setAuthor({ name: 'You collected your daily!', iconURL: "https://cdn.discordapp.com/attachments/951243124489990225/996527787852710059/yui_5f7026379c0ef.png" })
             .setThumbnail(user1.displayAvatarURL())
-            .setDescription(`💰 You collected **${(350 + ((userStats.skills.mine.level + userStats.skills.mine.level + userStats.skills.mine.level) * 50) + (userStats.workers * 200) + (bankdrop.value)) * bankdrop.bonus} silver** from your daily reward!
-            🪓 You earned **${(userStats.skills.mine.level + userStats.skills.mine.level + userStats.skills.mine.level) * 50} silver** from your skills level reward!
-            ⚒ An extra **${userStats.workers * 200} silver** was collected from workers!
-            🏦 Your bank gained **${bankdrop.value} silver** in interest!
+            .setDescription(`💰 You collected **${new Intl.NumberFormat('de-DE').format((350 + ((userStats.skills.mine.level + userStats.skills.mine.level + userStats.skills.mine.level) * 50) + (userStats.workers * 200) + (bankdrop.value)) * bankdrop.bonus)} silver** from your daily reward!
+            🪓 You earned **${new Intl.NumberFormat('de-DE').format((userStats.skills.mine.level + userStats.skills.mine.level + userStats.skills.mine.level) * 50)} silver** from your skills level reward!
+            ⚒ An extra **${new Intl.NumberFormat('de-DE').format(userStats.workers * 200)} silver** was collected from workers!
+            🏦 Your bank gained **${new Intl.NumberFormat('de-DE').format(bankdrop.value)} silver** in interest!
             ${bankdrop.message}
             `)
             .addFields(

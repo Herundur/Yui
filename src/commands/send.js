@@ -23,13 +23,13 @@ module.exports = function async (user, message, reciver, amount) {
                         userDataNew.updateOne({ $inc: {silver: -amount}})
                         const reciverStats = playerStats.findOne({ _id: reciver.id })
                         reciverStats.updateOne({ $inc: {silver: +amount}})
-                        message.channel.send(`✅ | Transaction complete successfully: <:silver:996006753940537374> **${amount}** -> ${reciver} (<:silver:996006753940537374> **0** tax)`)
+                        message.channel.send(`✅ | Transaction complete successfully: <:silver:996006753940537374> **${new Intl.NumberFormat('de-DE').format(amount)}** -> ${reciver} (<:silver:996006753940537374> **0** tax)`)
 
                     } else if (userDataNew.silver >= amount && amount > 100000) {
                         userDataNew.updateOne({ $inc: {silver: -amount}})
                         const reciverStats = playerStats.findOne({ _id: reciver.id })
                         reciverStats.updateOne({ $inc: {silver: (amount * 0.8)}})
-                        message.channel.send(`✅ | Transaction complete successfully: <:silver:996006753940537374> **${amount * 0.8}** -> ${reciver} (<:silver:996006753940537374> **${amount * 0.2}** tax)`)
+                        message.channel.send(`✅ | Transaction complete successfully: <:silver:996006753940537374> **${new Intl.NumberFormat('de-DE').format(amount * 0.8)}** -> ${reciver} (<:silver:996006753940537374> **${new Intl.NumberFormat('de-DE').format(amount * 0.2)}** tax)`)
 
                     }else if (userDataNew.silver < amount) {
                         message.channel.send(`❗️| You do not have enough **silver**.`)

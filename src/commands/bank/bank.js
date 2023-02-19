@@ -10,11 +10,11 @@ module.exports = function (user, message) {
             .setAuthor({ name: 'Bank Information', iconURL: user.displayAvatarURL() })
             .addFields(
                 //{ name: '\u200B', value: '\u200B' },
-                { name: '🏦  Bank Balance', value: `${userStats.bankbalance} gold`, inline: true },
-                { name: '💰  Reserve Balance', value: `${userStats.bankreserve} silver`, inline: true },
-                { name: '🛡️  Maximum Reserve', value: `${userStats.banklevel * 1500} silver`, inline: true },
-                { name: '📈  Bank Interest', value: `Deposit **${Math.ceil(((userStats.banklevel * 1500)/1000)/0.072)} gold** to gain enough copper every day.`, inline: false },
-                { name: '💎  Bank Upgrades', value: `Your next ` + "`" + "yui bank upgrade" + "`" + ` will cost **${Math.ceil(5+(Math.pow(userStats.banklevel, 1.65)))} gold**.`, inline: false },
+                { name: '🏦  Bank Balance', value: `${new Intl.NumberFormat('de-DE').format(userStats.bankbalance)} gold`, inline: true },
+                { name: '💰  Reserve Balance', value: `${new Intl.NumberFormat('de-DE').format(userStats.bankreserve)} silver`, inline: true },
+                { name: '🛡️  Maximum Reserve', value: `${new Intl.NumberFormat('de-DE').format(userStats.banklevel * 1500)} silver`, inline: true },
+                { name: '📈  Bank Interest', value: `Deposit **${new Intl.NumberFormat('de-DE').format(Math.ceil(((userStats.banklevel * 1500)/1000)/0.072))} gold** to gain enough copper every day.`, inline: false },
+                { name: '💎  Bank Upgrades', value: `Your next ` + "`" + "yui bank upgrade" + "`" + ` will cost **${new Intl.NumberFormat('de-DE').format(Math.ceil(5+(Math.pow(userStats.banklevel, 1.65))))} gold**.`, inline: false },
                 { name: '💵  Deposit', value: `Deposit gold into the bank using ` + "`" + "yui bank deposit <amount>" + "`", inline: false },
             )
         return embedBank

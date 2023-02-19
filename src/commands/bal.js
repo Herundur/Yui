@@ -20,7 +20,7 @@ module.exports = function (user, message) {
             await createdData.save().catch(e => console.log(e)).then(
                 await playerStats.findOne({ _id: user.id })).then(userDataNew => {
 
-                    message.channel.send(`💰 | Here is your balance: <:gold:996006907288502332> **${userDataNew.gold}** <:silver:996006753940537374> **${userDataNew.silver}**!`)
+                    message.channel.send(`💰 | Here is your balance: <:gold:996006907288502332> **${new Intl.NumberFormat('de-DE').format(userDataNew.gold)}** <:silver:996006753940537374> **${new Intl.NumberFormat('de-DE').format(userDataNew.silver)}**!`)
                 })
             return
 
@@ -28,7 +28,7 @@ module.exports = function (user, message) {
         } else if (userData) {
             userData = await playerStats.findOne({ _id: user.id })
 
-            message.channel.send(`💰 | Here is your balance: <:gold:996006907288502332> **${userData.gold}** <:silver:996006753940537374> **${userData.silver}**!`)
+            message.channel.send(`💰 | Here is your balance: <:gold:996006907288502332> **${new Intl.NumberFormat('de-DE').format(userData.gold)}** <:silver:996006753940537374> **${new Intl.NumberFormat('de-DE').format(userData.silver)}**!`)
         }
         return
     }

@@ -22,12 +22,12 @@ module.exports = function async (user, message, currency, amount) {
                     if (currency === "gold" && userDataNew.silver / 1000 >= amount) {
                         userDataNew.updateOne({ $inc: {gold: amount, silver: amount * -1000}})
                         playerStats.findOne({ _id: user.id }).then(userDataNew => {
-                            message.channel.send(`💰 | You exchanged ${amount * 1000} silver for ${amount} gold.`)
+                            message.channel.send(`💰 | You exchanged ${new Intl.NumberFormat('de-DE').format(amount * 1000)} silver for ${new Intl.NumberFormat('de-DE').format(amount)} gold.`)
                         })
                     } else if (currency === "silver" && userDataNew.gold * 1000 >= amount && amount >= 1000) {
                         userDataNew.updateOne({ $inc: {silver: amount, gold: amount / -1000}})
                         playerStats.findOne({ _id: user.id }).then(userDataNew => {
-                            message.channel.send(`💰 | You exchanged ${amount / 1000} gold for ${amount} silver.`)
+                            message.channel.send(`💰 | You exchanged ${new Intl.NumberFormat('de-DE').format(amount / 1000)} gold for ${new Intl.NumberFormat('de-DE').format(amount)} silver.`)
                         })
                         //FALLS ZU WENIG SILBER ODER GOLD
                     } else if (currency === "gold" && userDataNew.silver / 1000 < amount) {
@@ -48,13 +48,13 @@ module.exports = function async (user, message, currency, amount) {
 
                 await userData.updateOne({ $inc: {gold: amount, silver: amount * -1000}})
                 await playerStats.findOne({ _id: user.id }).then(userData => {
-                    message.channel.send(`💰 | You exchanged **${amount * 1000} silver** for **${amount} gold**.`)
+                    message.channel.send(`💰 | You exchanged **${new Intl.NumberFormat('de-DE').format(amount * 1000)} silver** for **${new Intl.NumberFormat('de-DE').format(amount)} gold**.`)
                 })
                 // GOLD ZU SILVER
             } else if (currency === "silver" && userData.gold * 1000 >= amount && amount >= 1000) {
                 await userData.updateOne({ $inc: {silver: amount, gold: amount / -1000}})
                 await playerStats.findOne({ _id: user.id }).then(userData => {
-                    message.channel.send(`💰 | You exchanged **${amount / 1000} gold** for **${amount} silver**.`)
+                    message.channel.send(`💰 | You exchanged **${new Intl.NumberFormat('de-DE').format(amount / 1000)} gold** for **${new Intl.NumberFormat('de-DE').format(amount)} silver**.`)
                 })
                 //FALLS ZU WENIG SILBER ODER GOLD
             } else if (currency === "gold" && userData.silver / 1000 < amount) {

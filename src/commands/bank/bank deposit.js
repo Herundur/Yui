@@ -22,7 +22,7 @@ module.exports = function async (user, message, amount) {
                     if (userDataNew.gold >= amount) {
                         userDataNew.updateOne({ $inc: {gold: -amount, bankbalance: amount}})
                         playerStats.findOne({ _id: user.id }).then(userDataNew => {
-                            message.channel.send(`📈 | Successfully deposited **${amount} gold** into your account.`)
+                            message.channel.send(`📈 | Successfully deposited **${new Intl.NumberFormat('de-DE').format(amount)} gold** into your account.`)
                         })
                     } else if (userDataNew.gold < amount) {
                         message.channel.send(`❗️| You do not have enough **gold**.`)
@@ -40,7 +40,7 @@ module.exports = function async (user, message, amount) {
 
                 await userData.updateOne({ $inc: {gold: -amount, bankbalance: amount}})
                 await playerStats.findOne({ _id: user.id }).then(userData => {
-                    message.channel.send(`📈 | Successfully deposited **${amount} gold** into your account.`)
+                    message.channel.send(`📈 | Successfully deposited **${new Intl.NumberFormat('de-DE').format(amount)} gold** into your account.`)
                 })
                 // ZU WENIG GOLD
             } else if (userData.gold < amount) {

@@ -13,8 +13,8 @@ module.exports = function (user, message) {
             .setAuthor({ name: 'Banura | Yui 2.0', iconURL: 'https://cdn.discordapp.com/attachments/951243124489990225/955461759475523634/green-b-md.png' })
             .addFields(
                 //{ name: '\u200B', value: '\u200B' },
-                { name: '💰 Balance', value: "```" + `${userStats.gold} Gold\n${userStats.silver} Silver` + "```", inline: false },
-                { name: '🏦 Bank', value: "```" + `${userStats.bankbalance} Kapital\n${userStats.banklevel} Level\n${userStats.banklevel * 1500} max. Reserve` + "```", inline: false },
+                { name: '💰 Balance', value: "```" + `${new Intl.NumberFormat('de-DE').format(userStats.gold)} Gold\n${new Intl.NumberFormat('de-DE').format(userStats.silver)} Silver` + "```", inline: false },
+                { name: '🏦 Bank', value: "```" + `${new Intl.NumberFormat('de-DE').format(userStats.bankbalance)} Kapital\n${userStats.banklevel} Level\n${new Intl.NumberFormat('de-DE').format(userStats.banklevel * 1500)} max. Reserve` + "```", inline: false },
                 { name: '🏚️ Guild', value: "```" + `${userStats.workers} Workers\n${userStats.guild} Level\n${userStats.guild * 3} max. Workers` + "```", inline: false },
             )
             .setTimestamp()
